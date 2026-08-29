@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CardioNeuro AI - Doctor Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#007070",
+                        "outline-variant": "#c1c7cf",
+                        "surface-dim": "#d8dadb",
+                        "on-tertiary-fixed": "#410003",
+                        "on-tertiary-container": "#ff9d94",
+                        "on-secondary-fixed": "#002020",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "primary-fixed-dim": "#96cdf7",
+                        "secondary-fixed": "#8cf3f3",
+                        "on-surface-variant": "#41484e",
+                        "on-primary-fixed": "#001e2f",
+                        "surface-tint": "#276489",
+                        "surface": "#f8fafb",
+                        "on-primary-fixed-variant": "#004b6f",
+                        "surface-container-high": "#e6e8e9",
+                        "surface-container-low": "#f2f4f5",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "inverse-primary": "#96cdf7",
+                        "surface-container": "#eceeef",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#ffdad6",
+                        "secondary-container": "#8cf3f3",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#86bde7",
+                        "outline": "#71787f",
+                        "secondary-fixed-dim": "#6fd7d6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#960010",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "primary-fixed": "#c9e6ff",
+                        "background": "#f8fafb",
+                        "tertiary": "#6b0008",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f2",
+                        "error": "#ba1a1a",
+                        "secondary": "#006a6a",
+                        "inverse-surface": "#2e3132",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8fafb",
+                        "primary-container": "#004d71",
+                        "on-surface": "#191c1d",
+                        "primary": "#003550",
+                        "on-primary": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "xs": "4px",
+                        "base": "8px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "title-lg": ["Inter", "sans-serif"],
+                        "label-lg": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "data-mono": ["Inter", "monospace"]
+                    },
+                    fontSize: {
+                        "display-lg": ["57px", { lineHeight: "64px", letterSpacing: "-0.25px", fontWeight: "700" }],
+                        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                        "title-lg": ["22px", { lineHeight: "28px", fontWeight: "500" }],
+                        "label-lg": ["12px", { lineHeight: "16px", letterSpacing: "0.5px", fontWeight: "600" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "data-mono": ["14px", { lineHeight: "20px", letterSpacing: "0px", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(193, 199, 207, 0.3);
+        }
+        .chart-ring {
+            background: conic-gradient(
+                #ba1a1a 0% 15%, /* High Risk */
+                #ff9d94 15% 35%, /* Moderate Risk */
+                #006a6a 35% 100% /* Low Risk */
+            );
+            border-radius: 50%;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopAppBar (From JSON) -->
+<header class="fixed z-40 dark:bg-inverse-surface/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-title-lg text-title-lg docked full-width top-0 border-b border-outline-variant/30 flat no shadows flex justify-between items-center w-full px-container-margin py-base h-16 transition-colors bg-white"><div class="flex items-center gap-md"><img src="https://lh3.googleusercontent.com/aida/AP1WRLsoav2fu9nW90k7NdZQhvS2CU4s5dkD1ZzfTqzN3Dytwg7wKxn_qmSp90F5e4aq7duA_urannK9PPJIEpvvAbHD_prLDVVtBatT1r4KVIQOw7k8RG5oGYj0RErAJz1WGuDufcNa-lr5cuUa0BbD8FqDewwtJejYwIp-LAx0hYZZ3YcBrlxJYqaBR7EJobj73u-ldYIpGwGZPHqW4YENjLVTS6lOH0aFwWDEomxqiwUHygYKwk1BvRYQ5g" alt="CardioNeuro-Sentinel Logo" class="w-10 h-10 object-contain cursor-pointer active:scale-95 transition-transform"><h1 class="font-headline-lg text-headline-lg font-bold text-[#004d71] hidden md:block">CardioNeuro-Sentinel</h1><h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-[#004d71] md:hidden">CardioNeuro-Sentinel</h1></div><nav class="hidden md:flex items-center gap-lg"><a class="text-primary dark:text-primary-fixed-dim font-title-lg text-title-lg hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-sm py-xs rounded-lg" href="#">Home</a><a class="text-on-surface-variant dark:text-outline-variant font-title-lg text-title-lg hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-sm py-xs rounded-lg" href="#">Patients</a><a class="text-on-surface-variant dark:text-outline-variant font-title-lg text-title-lg hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-sm py-xs rounded-lg" href="#">Predict</a><a class="text-on-surface-variant dark:text-outline-variant font-title-lg text-title-lg hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-sm py-xs rounded-lg" href="#">Settings</a></nav><div class="cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low dark:hover:bg-surface-container-high p-sm rounded-full"><span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span></div></header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-container-margin pt-[88px] pb-24 md:pb-xl flex flex-col gap-xl">
+<!-- Header Greeting -->
+<section class="fade-in" style="animation-delay: 0.1s;">
+<p class="font-body-lg text-body-lg text-outline">Good Morning,</p>
+<h2 class="font-display-lg text-display-lg text-primary mt-xs">Dr. Sarah Mitchell</h2>
+</section>
+<!-- Stats Cards (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md fade-in" style="animation-delay: 0.2s;">
+<!-- Card 1 -->
+<div class="glass-panel rounded-xl p-md flex flex-col justify-between h-32 hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-title-lg text-title-lg text-on-surface">Total Patients</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary tracking-tight">1,240</div>
+</div>
+<!-- Card 2 (High Alert Focus) -->
+<div class="glass-panel rounded-xl p-md flex flex-col justify-between h-32 border-error/30 bg-error-container/10">
+<div class="flex justify-between items-start">
+<span class="font-title-lg text-title-lg text-on-surface">High Risk</span>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<div class="font-display-lg text-display-lg text-error tracking-tight">14</div>
+<span class="font-body-md text-body-md text-error flex items-center"><span class="material-symbols-outlined text-[16px]">arrow_upward</span> +2 today</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-xl p-md flex flex-col justify-between h-32 hover:border-primary/50 transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-title-lg text-title-lg text-on-surface">Today's Assessments</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">assignment</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary tracking-tight">8</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg fade-in" style="animation-delay: 0.3s;">
+<!-- Section 1: AI Prediction Stats -->
+<section class="lg:col-span-5 glass-panel rounded-xl p-lg flex flex-col">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">neurology</span>
+                    AI Prediction Distribution
+                </h3>
+<div class="flex-1 flex flex-col items-center justify-center relative py-md">
+<!-- CSS Chart -->
+<div class="w-48 h-48 chart-ring relative shadow-sm border-4 border-white flex items-center justify-center">
+<div class="w-32 h-32 bg-surface rounded-full flex flex-col items-center justify-center z-10 shadow-inner">
+<span class="font-body-md text-body-md text-outline">Analyzed</span>
+<span class="font-headline-lg text-headline-lg text-primary">84%</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="w-full mt-lg space-y-sm">
+<div class="flex justify-between items-center px-md py-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-sm"><div class="w-3 h-3 rounded-full bg-error"></div><span class="font-body-md text-body-md">High Risk (CRIT-1)</span></div>
+<span class="font-data-mono text-data-mono">15%</span>
+</div>
+<div class="flex justify-between items-center px-md py-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-sm"><div class="w-3 h-3 rounded-full bg-tertiary-container"></div><span class="font-body-md text-body-md">Moderate (EVAL-2)</span></div>
+<span class="font-data-mono text-data-mono">20%</span>
+</div>
+<div class="flex justify-between items-center px-md py-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-sm"><div class="w-3 h-3 rounded-full bg-secondary"></div><span class="font-body-md text-body-md">Nominal (BASE-3)</span></div>
+<span class="font-data-mono text-data-mono">65%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2 & 3 Column -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Section 2: High-Risk Alerts -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-lg shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-lg text-title-lg text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">emergency</span>
+                            High-Risk Alerts
+                        </h3>
+<button class="font-label-lg text-label-lg text-primary hover:bg-surface-container-low px-sm py-xs rounded-lg transition-colors">View All</button>
+</div>
+<div class="space-y-sm overflow-y-auto max-h-[300px] pr-sm">
+<!-- Alert Item 1 -->
+<div class="flex items-center justify-between p-md rounded-lg bg-surface border border-outline-variant/20 hover:border-error/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A clinical headshot of an elderly male patient with grey hair, neutral expression. Professional lighting, white background, conveying a standard medical file photograph aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0hjKJ0BlF1QHcFLlFqrNp3eSHKIh8ZUerGya-wUx6XzBnx0LgiZIXiDxLVMuJ2rAzUirrdbaEpqY-476sitCQDZ23jcSM1hq_BTsYcTCBHUoVLGMo6fMz4xtFJ-l07aWRs6cwQDXYxQP0CIpmhtE2ibq15T3IWC8Enw9NqUyELHxMSPYj0aajIZtw6dKXe8FG99hkJh08PpP8yQ7Vree3S7rPtoytWvjbroigPwkdviUEUYAPn9b5">
+<div>
+<div class="font-body-lg text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Robert Davis</div>
+<div class="font-data-mono text-data-mono text-outline text-xs">ID: CN-8834 | Afib Detection</div>
+</div>
+</div>
+<span class="bg-error text-on-error font-label-lg text-label-lg px-sm py-xs rounded-lg uppercase tracking-wider flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span> Critical
+                            </span>
+</div>
+<!-- Alert Item 2 -->
+<div class="flex items-center justify-between p-md rounded-lg bg-surface border border-outline-variant/20 hover:border-tertiary-container/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A clinical headshot of a middle-aged female patient with blonde hair tied back. Soft lighting, neutral background, typical of secure medical database profile pictures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCamHJ4KFJjJQw5oc6iY8ZiumnNl-Q9qkuKzhm1Ij-uIr_EkpGY029w4JFJ0p08uVCdH9J-7vJSwcIf2tZfCXcFVifmzxXrHowWi0Fozs7qGM6KUIDxd-5Sis8j-4GIMsOOunxDkd2Bo3zuvE6bvDy7TIbRt4zI8MKcjT64cyVu0fF85hpx4vGKJcTHsPY3GWbYhmJOVuZMYc9-ULg7s_ti06eshMPaMik09NO0A6wPzCldm-Av0wYY">
+<div>
+<div class="font-body-lg text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Elena Rodriguez</div>
+<div class="font-data-mono text-data-mono text-outline text-xs">ID: CN-9102 | BP Anomaly</div>
+</div>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-lg text-label-lg px-sm py-xs rounded-lg uppercase tracking-wider">
+                                High
+                            </span>
+</div>
+</div>
+</section>
+<!-- Section 3: Recent Activity (Timeline) -->
+<section class="glass-panel rounded-xl p-lg">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-md">Recent Activity</h3>
+<div class="relative border-l-2 border-surface-variant ml-sm space-y-md pb-sm">
+<!-- Timeline Item 1 -->
+<div class="relative pl-lg">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1.5 border-2 border-white"></div>
+<div class="font-body-md text-body-md text-outline mb-xs">10:45 AM</div>
+<div class="bg-surface border border-outline-variant/20 p-sm rounded-lg">
+<p class="font-body-lg text-body-lg text-on-surface">Completed neuro-assessment for <span class="font-semibold">James W.</span></p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-lg">
+<div class="absolute w-3 h-3 bg-secondary rounded-full -left-[7px] top-1.5 border-2 border-white"></div>
+<div class="font-body-md text-body-md text-outline mb-xs">09:15 AM</div>
+<div class="bg-surface border border-outline-variant/20 p-sm rounded-lg">
+<p class="font-body-lg text-body-lg text-on-surface">Reviewed telemetry batch <span class="font-data-mono text-data-mono text-sm">#TB-441</span></p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (From JSON) - Mobile Only -->
+<nav class="md:hidden bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-label-lg text-label-lg docked full-width bottom-0 border-t border-outline-variant/30 flat no shadows fixed bottom-0 w-full z-50 flex justify-around items-center px-base pb-safe h-20">
+<!-- Active Tab: Home -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-xs" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="">Home</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-xs">group</span>
+<span class="">Patients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-xs">neurology</span>
+<span class="">Predict</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-xs">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+
+
+</body></html>

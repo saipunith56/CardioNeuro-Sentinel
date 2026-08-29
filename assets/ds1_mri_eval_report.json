@@ -1,0 +1,151 @@
+{
+  "model_name": "DS1_MRI_StrokeType_MobileNetV3Small",
+  "dataset": "Stroke Classification Dataset",
+  "dataset_version": "Local 2D Slice Images (DS1)",
+  "number_patients": 16,
+  "number_records": 615,
+  "split_method": "stratified_patient_level",
+  "input_shape": [
+    1,
+    3,
+    128,
+    128
+  ],
+  "architecture": "MobileNetV3-Small (Pretrained Transfer Learning)",
+  "parameter_count": 1520931,
+  "training_seed": 42,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "batch_size": 16,
+  "epochs": 15,
+  "best_checkpoint": "ds1_mri_stroke_model.pt",
+  "validation_metrics": {
+    "slice_level": {
+      "accuracy": 0.46923076923076923,
+      "sensitivity": 0.3707785282616424,
+      "recall": 0.3707785282616424,
+      "specificity": 0.6906690669066906,
+      "precision": 0.34444172180021243,
+      "f1_score": 0.3080083857442348,
+      "auroc": 0.6625952848446187,
+      "brier_score": 0.8789448371949152,
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          9
+        ],
+        [
+          1,
+          0,
+          3
+        ],
+        [
+          56,
+          0,
+          41
+        ]
+      ]
+    },
+    "patient_level": {
+      "accuracy": 0.3333333333333333,
+      "sensitivity": 0.3333333333333333,
+      "recall": 0.3333333333333333,
+      "specificity": 0.6666666666666666,
+      "precision": 0.16666666666666666,
+      "f1_score": 0.2222222222222222,
+      "auroc": 0.8333333333333334,
+      "brier_score": 0.7840048520825755,
+      "confusion_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "test_metrics": {
+    "slice_level": {
+      "accuracy": 0.3706293706293706,
+      "sensitivity": 0.3862292154893427,
+      "recall": 0.3862292154893427,
+      "specificity": 0.709795321637427,
+      "precision": 0.3593280780780781,
+      "f1_score": 0.2571428571428572,
+      "auroc": 0.7240230930296975,
+      "brier_score": 1.0802530476849088,
+      "confusion_matrix": [
+        [
+          26,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          2
+        ],
+        [
+          76,
+          0,
+          27
+        ]
+      ]
+    },
+    "patient_level": {
+      "accuracy": 0.3333333333333333,
+      "sensitivity": 0.3333333333333333,
+      "recall": 0.3333333333333333,
+      "specificity": 0.6666666666666666,
+      "precision": 0.1111111111111111,
+      "f1_score": 0.16666666666666666,
+      "auroc": 1.0,
+      "brier_score": 0.8853701278236129,
+      "confusion_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "reproducibility": {
+    "passed": true,
+    "max_difference": 0.0
+  },
+  "onnx_export": {
+    "saved": true,
+    "verified": true,
+    "max_difference": 2.9206275939941406e-06
+  },
+  "known_limitations": "Highly restricted 16-patient 2D axial dataset. Extremely small sample size. Cannot validate generalizable patient-specific clinical diagnosis.",
+  "environment": {
+    "python": "3.13.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cpu",
+    "numpy": "2.2.6",
+    "seed": 42
+  }
+}

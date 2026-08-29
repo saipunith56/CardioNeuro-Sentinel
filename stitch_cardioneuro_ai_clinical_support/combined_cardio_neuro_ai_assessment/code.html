@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AI Risk Prediction Input - CardioNeuro AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#007070",
+                      "outline-variant": "#c1c7cf",
+                      "surface-dim": "#d8dadb",
+                      "on-tertiary-fixed": "#410003",
+                      "on-tertiary-container": "#ff9d94",
+                      "on-secondary-fixed": "#002020",
+                      "on-tertiary-fixed-variant": "#930010",
+                      "primary-fixed-dim": "#96cdf7",
+                      "secondary-fixed": "#8cf3f3",
+                      "on-surface-variant": "#41484e",
+                      "on-primary-fixed": "#001e2f",
+                      "surface-tint": "#276489",
+                      "surface": "#f8fafb",
+                      "on-primary-fixed-variant": "#004b6f",
+                      "surface-container-high": "#e6e8e9",
+                      "surface-container-low": "#f2f4f5",
+                      "on-secondary-fixed-variant": "#004f4f",
+                      "inverse-primary": "#96cdf7",
+                      "surface-container": "#eceeef",
+                      "on-background": "#191c1d",
+                      "tertiary-fixed": "#ffdad6",
+                      "secondary-container": "#8cf3f3",
+                      "surface-variant": "#e1e3e4",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-primary-container": "#86bde7",
+                      "outline": "#71787f",
+                      "secondary-fixed-dim": "#6fd7d6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#960010",
+                      "tertiary-fixed-dim": "#ffb3ac",
+                      "primary-fixed": "#c9e6ff",
+                      "background": "#f8fafb",
+                      "tertiary": "#6b0008",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#eff1f2",
+                      "error": "#ba1a1a",
+                      "secondary": "#006a6a",
+                      "inverse-surface": "#2e3132",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f8fafb",
+                      "primary-container": "#004d71",
+                      "on-surface": "#191c1d",
+                      "primary": "#003550",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "base": "8px",
+                      "xl": "40px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "container-margin": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "data-mono": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.25px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-lg": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant/30 flex justify-between items-center px-container-margin py-base h-16 bg-white">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 overflow-hidden cursor-pointer active:scale-95 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLsoav2fu9nW90k7NdZQhvS2CU4s5dkD1ZzfTqzN3Dytwg7wKxn_qmSp90F5e4aq7duA_urannK9PPJIEpvvAbHD_prLDVVtBatT1r4KVIQOw7k8RG5oGYj0RErAJz1WGuDufcNa-lr5cuUa0BbD8FqDewwtJejYwIp-LAx0hYZZ3YcBrlxJYqaBR7EJobj73u-ldYIpGwGZPHqW4YENjLVTS6lOH0aFwWDEomxqiwUHygYKwk1BvRYQ5g" alt="CardioNeuro-Sentinel Logo" class="w-full h-full object-contain"></div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim hidden md:block text-[#004d71] font-Inter">CardioNeuro-Sentinel</h1>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim md:hidden text-[#004d71] font-Inter">CardioNeuro-Sentinel</h1>
+</div>
+<div class="flex items-center">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] pb-[100px] px-container-margin w-full max-w-5xl mx-auto md:grid md:grid-cols-12 md:gap-gutter">
+<div class="col-span-12 md:col-start-3 md:col-span-8">
+<div class="mb-lg">
+<h2 class="font-title-lg text-title-lg text-primary mb-xs">New AI Assessment</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter patient clinical telemetry to generate predictive risk models.</p>
+</div>
+<form class="space-y-xl">
+<!-- Vital Signs Section -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl">
+<h3 class="font-title-lg text-title-lg text-primary mb-md border-b border-outline-variant/30 pb-sm">Vitals &amp; Demographics</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="age">Age</label>
+<input class="form-input rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="age" placeholder="e.g., 45" type="number">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="bmi">BMI</label>
+<input class="form-input rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="bmi" placeholder="e.g., 24.5" step="0.1" type="number">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface">Blood Pressure (mmHg)</label>
+<div class="flex items-center gap-xs">
+<input class="form-input w-full rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="bp-sys" placeholder="Systolic" type="number">
+<span class="text-on-surface-variant font-data-mono">/</span>
+<input class="form-input w-full rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="bp-dia" placeholder="Diastolic" type="number">
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="hr">Heart Rate (bpm)</label>
+<input class="form-input rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="hr" placeholder="e.g., 72" type="number">
+</div>
+</div>
+</section>
+<!-- Lab Results Section -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl">
+<h3 class="font-title-lg text-title-lg text-primary mb-md border-b border-outline-variant/30 pb-sm">Biomarkers</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="cholesterol">Total Cholesterol (mg/dL)</label>
+<input class="form-input rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="cholesterol" placeholder="e.g., 190" type="number">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="glucose">Fasting Blood Sugar (mg/dL)</label>
+<input class="form-input rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="glucose" placeholder="e.g., 95" type="number">
+</div>
+</div>
+</section>
+<!-- History & Symptoms Section -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl">
+<h3 class="font-title-lg text-title-lg text-primary mb-md border-b border-outline-variant/30 pb-sm">Clinical History</h3>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-sm border border-outline-variant/30 rounded-DEFAULT bg-surface">
+<label class="font-body-md text-body-md text-on-surface" for="smoking">Current Smoker</label>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="smoking" type="checkbox">
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:bg-primary-container peer-focus:ring-2 peer-focus:ring-primary-container after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white"></div>
+</label>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface">Family History (Select all that apply)</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<label class="flex items-center p-sm border border-outline-variant/30 rounded-DEFAULT cursor-pointer hover:bg-surface-container-low">
+<input class="form-checkbox text-primary-container border-outline-variant rounded-DEFAULT focus:ring-primary-container" type="checkbox">
+<span class="ml-sm font-body-md text-body-md text-on-surface">Coronary Artery Disease</span>
+</label>
+<label class="flex items-center p-sm border border-outline-variant/30 rounded-DEFAULT cursor-pointer hover:bg-surface-container-low">
+<input class="form-checkbox text-primary-container border-outline-variant rounded-DEFAULT focus:ring-primary-container" type="checkbox">
+<span class="ml-sm font-body-md text-body-md text-on-surface">Stroke</span>
+</label>
+<label class="flex items-center p-sm border border-outline-variant/30 rounded-DEFAULT cursor-pointer hover:bg-surface-container-low">
+<input class="form-checkbox text-primary-container border-outline-variant rounded-DEFAULT focus:ring-primary-container" type="checkbox">
+<span class="ml-sm font-body-md text-body-md text-on-surface">Hypertension</span>
+</label>
+<label class="flex items-center p-sm border border-outline-variant/30 rounded-DEFAULT cursor-pointer hover:bg-surface-container-low">
+<input class="form-checkbox text-primary-container border-outline-variant rounded-DEFAULT focus:ring-primary-container" type="checkbox">
+<span class="ml-sm font-body-md text-body-md text-on-surface">Diabetes</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="symptoms">Reported Symptoms</label>
+<textarea class="form-textarea rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md" id="symptoms" placeholder="Briefly describe patient symptoms..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- ECG Upload Section -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl">
+<h3 class="font-title-lg text-title-lg text-primary mb-md flex items-center gap-sm border-b border-outline-variant/30 pb-sm"><span class="material-symbols-outlined">neurology</span>
+                        Neurological Diagnostics</h3>
+<div class="space-y-xl">
+<div class="flex flex-col gap-xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="nihss">NIH Stroke Scale (NIHSS)</label>
+<input class="form-input rounded-DEFAULT border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-data-mono text-data-mono h-10" id="nihss" max="42" min="0" placeholder="e.g., 0-42" type="number">
+</div>
+<div class="space-y-md">
+    <div class="flex flex-col gap-sm">
+        <label class="font-label-lg text-label-lg text-on-surface">Neuroimaging (CT / MRI)</label>
+        <div class="border-2 border-dashed border-outline-variant/50 rounded-lg p-xl flex flex-col items-center justify-center bg-surface hover:bg-surface-container-low transition-colors cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container mb-md group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+            </div>
+            <p class="font-body-lg text-body-lg text-on-surface mb-xs">Drag and drop Neuroimaging scan here</p>
+            <p class="font-body-md text-body-md text-on-surface-variant text-center max-w-sm">Supports DICOM, NIfTI formats for Ischemic vs Hemorrhagic detection. Max size 100MB.</p>
+            <button class="mt-md px-md py-sm border border-secondary text-secondary rounded-DEFAULT font-label-lg text-label-lg hover:bg-secondary/10 transition-colors" type="button">
+                Browse Files
+            </button>
+        </div>
+    </div>
+    <div class="flex flex-col gap-sm">
+        <label class="font-label-lg text-label-lg text-on-surface">EEG Data</label>
+        <div class="border-2 border-dashed border-outline-variant/50 rounded-lg p-xl flex flex-col items-center justify-center bg-surface hover:bg-surface-container-low transition-colors cursor-pointer group">
+            <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container mb-md group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+            </div>
+            <p class="font-body-lg text-body-lg text-on-surface mb-xs">Drag and drop EEG data file here</p>
+            <p class="font-body-md text-body-md text-on-surface-variant text-center max-w-sm">Upload brain wave telemetry for real-time electrical activity analysis. Max size 50MB.</p>
+            <button class="mt-md px-md py-sm border border-secondary text-secondary rounded-DEFAULT font-label-lg text-label-lg hover:bg-secondary/10 transition-colors" type="button">
+                Browse Files
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+</section><section class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl">
+<h3 class="font-title-lg text-title-lg text-primary mb-md flex items-center gap-sm border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+                        Telemetry Upload
+                    </h3>
+<div class="border-2 border-dashed border-outline-variant/50 rounded-lg p-xl flex flex-col items-center justify-center bg-surface hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface mb-xs">Drag and drop ECG data file here</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-center max-w-sm">Supports DICOM, EDF, or standard high-resolution image formats (PNG, JPEG). Max size 50MB.</p>
+<button class="mt-md px-md py-sm border border-secondary text-secondary rounded-DEFAULT font-label-lg text-label-lg hover:bg-secondary/10 transition-colors" type="button">
+                            Browse Files
+                        </button>
+</div>
+</section>
+<!-- Action Area -->
+<div class="pt-md flex flex-col items-center gap-md border-t border-outline-variant/30">
+<button class="w-full md:w-auto bg-primary text-on-primary px-xl py-md rounded-DEFAULT font-label-lg text-label-lg hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-sm shadow-sm" type="button">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+                        Generate AI Prediction
+                    </button>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+                        Not a diagnostic tool. Clinical judgment required.
+                    </p>
+</div>
+</form>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-base pb-safe h-20 md:hidden bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md border-t border-outline-variant/30">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 duration-200 w-16 h-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 duration-200 w-16 h-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-label-lg text-label-lg">Patients</span>
+</a>
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary active:scale-90 transition-transform duration-200 w-16 h-16" href="#">
+<div class="bg-secondary-container dark:bg-secondary rounded-full px-4 py-1 flex flex-col items-center justify-center w-full">
+<span class="material-symbols-outlined mb-1" data-icon="neurology" data-weight="fill" style="font-variation-settings: 'FILL' 1;">neurology</span>
+</div>
+<span class="font-label-lg text-label-lg mt-1 font-bold">Predict</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors active:scale-90 duration-200 w-16 h-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<!-- Desktop Nav Sidebar (Hidden on mobile, present for grid context if needed, but per requirements we just use top app bar for web and bottom for mobile in this specific hybrid layout). We rely on the top app bar on desktop. -->
+
+
+
+
+</body></html>

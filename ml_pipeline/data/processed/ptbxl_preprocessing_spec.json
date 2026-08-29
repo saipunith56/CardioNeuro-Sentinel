@@ -1,0 +1,49 @@
+{
+    "dataset_name": "PTB-XL ECG Dataset (v1.0.3)",
+    "sampling_frequency_target_hz": 100.0,
+    "signal_duration_seconds": 10.0,
+    "leads": [
+        "I",
+        "II",
+        "III",
+        "aVR",
+        "aVL",
+        "aVF",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6"
+    ],
+    "filtering": {
+        "bandpass_lower_cut_hz": 0.5,
+        "bandpass_upper_cut_hz": 40.0,
+        "method": "Butterworth bandpass filter, order 4"
+    },
+    "normalization": {
+        "method": "Z-score normalization",
+        "params": "channel-wise mean subtraction and standard deviation scaling"
+    },
+    "resampling": {
+        "method": "scipy.signal.resample if source rate is not 100 Hz"
+    },
+    "segmentation": {
+        "fixed_length_samples": 1000,
+        "padding_method": "zero-padding if duration is less than 10s (standard PTB-XL records are 10.0s)"
+    },
+    "tensor_conversion": {
+        "output_shape": [
+            12,
+            1000
+        ],
+        "dtype": "float32"
+    },
+    "diagnostic_superclass_mapping": {
+        "NORM": "Normal ECG",
+        "MI": "Myocardial Infarction",
+        "STTC": "ST/T Change",
+        "CD": "Conduction Disturbance",
+        "HYP": "Hypertrophy"
+    }
+}

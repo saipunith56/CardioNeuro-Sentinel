@@ -1,0 +1,169 @@
+{
+  "model_name": "DS4_ECG_5Superclass_ResNet1D",
+  "architecture": "1D residual convolutional network (ResNet-1D)",
+  "task": "Five-class multi-label ECG diagnostic classification",
+  "dataset_name": "PTB-XL ECG Waveforms Dataset (v1.0.3)",
+  "train_patients": 15023,
+  "val_patients": 1942,
+  "test_patients": 1904,
+  "train_records": 17418,
+  "val_records": 2183,
+  "test_records": 2198,
+  "test_metrics": {
+    "macro_auroc": 0.902582262244157,
+    "macro_auprc": 0.7567504297802605,
+    "macro_sensitivity": 0.8527681284594889,
+    "macro_specificity": 0.790736237740272,
+    "macro_precision": 0.5786120583621204,
+    "macro_f1_score": 0.6683485831162594,
+    "macro_brier_score": 0.13490064740180968,
+    "per_class": {
+      "NORM": {
+        "accuracy": 0.8512283894449499,
+        "sensitivity": 0.8701973001038421,
+        "specificity": 0.8364372469635628,
+        "precision": 0.8057692307692308,
+        "recall": 0.8701973001038421,
+        "f1_score": 0.836744882675986,
+        "auroc": 0.9347173349140883,
+        "auprc": 0.9024728471403198,
+        "brier_score": 0.10191039741039276,
+        "confusion_matrix": [
+          [
+            1033,
+            202
+          ],
+          [
+            125,
+            838
+          ]
+        ]
+      },
+      "MI": {
+        "accuracy": 0.7925386715195633,
+        "sensitivity": 0.8836363636363637,
+        "specificity": 0.7621359223300971,
+        "precision": 0.5535307517084282,
+        "recall": 0.8836363636363637,
+        "f1_score": 0.680672268907563,
+        "auroc": 0.9053105692850838,
+        "auprc": 0.7774121901507673,
+        "brier_score": 0.14611577987670898,
+        "confusion_matrix": [
+          [
+            1256,
+            392
+          ],
+          [
+            64,
+            486
+          ]
+        ]
+      },
+      "STTC": {
+        "accuracy": 0.8384895359417652,
+        "sensitivity": 0.8952569169960475,
+        "specificity": 0.8215130023640662,
+        "precision": 0.6,
+        "recall": 0.8952569169960475,
+        "f1_score": 0.71847739888977,
+        "auroc": 0.9285424784384081,
+        "auprc": 0.7978062534826088,
+        "brier_score": 0.11500957608222961,
+        "confusion_matrix": [
+          [
+            1390,
+            302
+          ],
+          [
+            53,
+            453
+          ]
+        ]
+      },
+      "CD": {
+        "accuracy": 0.8767060964513194,
+        "sensitivity": 0.7903225806451613,
+        "specificity": 0.9018801410105758,
+        "precision": 0.7012522361359571,
+        "recall": 0.7903225806451613,
+        "f1_score": 0.7431279620853081,
+        "auroc": 0.9164870076949321,
+        "auprc": 0.8271713847012518,
+        "brier_score": 0.09424196183681488,
+        "confusion_matrix": [
+          [
+            1535,
+            167
+          ],
+          [
+            104,
+            392
+          ]
+        ]
+      },
+      "HYP": {
+        "accuracy": 0.6546860782529572,
+        "sensitivity": 0.8244274809160306,
+        "specificity": 0.6317148760330579,
+        "precision": 0.232508073196986,
+        "recall": 0.8244274809160306,
+        "f1_score": 0.36272040302267,
+        "auroc": 0.827853920888272,
+        "auprc": 0.4788894734263548,
+        "brier_score": 0.21722552180290222,
+        "confusion_matrix": [
+          [
+            1223,
+            713
+          ],
+          [
+            46,
+            216
+          ]
+        ]
+      }
+    }
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6801552042640546,
+      "val_macro_auroc": 0.864644640545982
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6108544724435726,
+      "val_macro_auroc": 0.8915325461881514
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5792947913991527,
+      "val_macro_auroc": 0.8894113690084111
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.5588970269465887,
+      "val_macro_auroc": 0.9024159605689043
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.5428100068296243,
+      "val_macro_auroc": 0.902868742758883
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.5312362498367321,
+      "val_macro_auroc": 0.9038830212224163
+    }
+  ],
+  "reproducibility": "PASSED",
+  "frozen": true,
+  "environment": {
+    "python": "3.13.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cpu",
+    "numpy": "2.2.6",
+    "seed": 42
+  }
+}

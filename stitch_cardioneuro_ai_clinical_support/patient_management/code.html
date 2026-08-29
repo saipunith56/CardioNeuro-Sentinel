@@ -1,0 +1,373 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CardioNeuro AI - Patient Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#007070",
+                        "outline-variant": "#c1c7cf",
+                        "surface-dim": "#d8dadb",
+                        "on-tertiary-fixed": "#410003",
+                        "on-tertiary-container": "#ff9d94",
+                        "on-secondary-fixed": "#002020",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "primary-fixed-dim": "#96cdf7",
+                        "secondary-fixed": "#8cf3f3",
+                        "on-surface-variant": "#41484e",
+                        "on-primary-fixed": "#001e2f",
+                        "surface-tint": "#276489",
+                        "surface": "#f8fafb",
+                        "on-primary-fixed-variant": "#004b6f",
+                        "surface-container-high": "#e6e8e9",
+                        "surface-container-low": "#f2f4f5",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "inverse-primary": "#96cdf7",
+                        "surface-container": "#eceeef",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#ffdad6",
+                        "secondary-container": "#8cf3f3",
+                        "surface-variant": "#e1e3e4",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#86bde7",
+                        "outline": "#71787f",
+                        "secondary-fixed-dim": "#6fd7d6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#960010",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "primary-fixed": "#c9e6ff",
+                        "background": "#f8fafb",
+                        "tertiary": "#6b0008",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f2",
+                        "error": "#ba1a1a",
+                        "secondary": "#006a6a",
+                        "inverse-surface": "#2e3132",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8fafb",
+                        "primary-container": "#004d71",
+                        "on-surface": "#191c1d",
+                        "primary": "#003550",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "8px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "data-mono": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for clinical look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8FAFB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c7cf;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #71787f;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-20 md:pb-0 flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-title-lg text-title-lg docked full-width top-0 border-b border-outline-variant/30 flat no shadows flex justify-between items-center w-full px-container-margin py-base h-16 sticky z-40"><div class="flex items-center gap-sm"><div class="w-10 h-10 rounded-sm overflow-hidden flex items-center justify-center cursor-pointer active:scale-95 transition-transform"><img src="https://lh3.googleusercontent.com/aida/AP1WRLsoav2fu9nW90k7NdZQhvS2CU4s5dkD1ZzfTqzN3Dytwg7wKxn_qmSp90F5e4aq7duA_urannK9PPJIEpvvAbHD_prLDVVtBatT1r4KVIQOw7k8RG5oGYj0RErAJz1WGuDufcNa-lr5cuUa0BbD8FqDewwtJejYwIp-LAx0hYZZ3YcBrlxJYqaBR7EJobj73u-ldYIpGwGZPHqW4YENjLVTS6lOH0aFwWDEomxqiwUHygYKwk1BvRYQ5g" alt="CardioNeuro-Sentinel Logo" class="w-full h-full object-contain"></div><span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-[#004d71] font-['Inter']">CardioNeuro-Sentinel</span></div><nav class="hidden md:flex items-center gap-lg"><a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center gap-xs" href="#"><span class="material-symbols-outlined text-[20px]" data-icon="home">home</span><span class="font-label-lg text-label-lg">Home</span></a><a class="text-primary dark:text-primary-fixed-dim bg-secondary-container/20 dark:bg-secondary/20 hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center gap-xs" href="#"><span class="material-symbols-outlined text-[20px] icon-fill" data-icon="group">group</span><span class="font-label-lg text-label-lg">Patients</span></a><a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center gap-xs" href="#"><span class="material-symbols-outlined text-[20px]" data-icon="neurology">neurology</span><span class="font-label-lg text-label-lg">Predict</span></a><a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg flex items-center gap-xs" href="#"><span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span><span class="font-label-lg text-label-lg">Settings</span></a></nav><div class="cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-full flex items-center justify-center text-on-surface-variant dark:text-outline-variant"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></div></header>
+<main class="flex-grow container mx-auto px-container-margin py-lg max-w-7xl">
+<!-- Page Header & Search/Filter Bar -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg mb-md text-on-background">Patient Directory</h1>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-sm flex flex-col md:flex-row gap-sm items-center shadow-sm">
+<!-- Search -->
+<div class="relative w-full md:flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded-lg border-none focus:ring-2 focus:ring-secondary focus:bg-surface-container-lowest transition-all font-body-md text-body-md text-on-surface placeholder:text-outline" placeholder="Search patient name or ID..." type="text">
+</div>
+<!-- Divider -->
+<div class="hidden md:block w-px h-8 bg-outline-variant/30 mx-sm"></div>
+<!-- Filters -->
+<div class="flex w-full md:w-auto gap-sm overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+<button class="flex items-center gap-xs px-4 py-2 rounded-lg border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors whitespace-nowrap text-on-surface font-label-lg text-label-lg flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                        Risk Level
+                    </button>
+<button class="flex items-center gap-xs px-4 py-2 rounded-lg border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors whitespace-nowrap text-on-surface font-label-lg text-label-lg flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                        Age
+                    </button>
+<button class="flex items-center gap-xs px-4 py-2 rounded-lg border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors whitespace-nowrap text-on-surface font-label-lg text-label-lg flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        Last Visit
+                    </button>
+</div>
+</div>
+</div>
+<!-- Patient List / Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Patient Card: Critical -->
+<div class="bg-surface-container-lowest border border-error/30 rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group cursor-pointer hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300">
+<!-- Critical indicator strip -->
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-title-lg text-title-lg text-primary">
+                            JD
+                        </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">John Doe</h3>
+<span class="font-data-mono text-data-mono text-outline">ID: CN-8942-A</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-xs mt-sm bg-surface rounded-lg p-sm">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Age</span>
+<span class="font-body-md text-body-md text-on-surface">68 yrs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Last Visit</span>
+<span class="font-body-md text-body-md text-on-surface">Today</span>
+</div>
+</div>
+<div class="mt-auto pt-sm flex justify-between items-center border-t border-outline-variant/20">
+<div class="flex items-center gap-xs px-2 py-1 rounded bg-error text-on-error w-fit">
+<span class="material-symbols-outlined text-[16px] animate-pulse">warning</span>
+<span class="font-label-lg text-label-lg">Critical</span>
+</div>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Patient Card: High -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group cursor-pointer hover:border-outline-variant hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-title-lg text-title-lg text-primary">
+                            AS
+                        </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Alice Smith</h3>
+<span class="font-data-mono text-data-mono text-outline">ID: CN-7731-B</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-xs mt-sm bg-surface rounded-lg p-sm">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Age</span>
+<span class="font-body-md text-body-md text-on-surface">54 yrs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Last Visit</span>
+<span class="font-body-md text-body-md text-on-surface">2 days ago</span>
+</div>
+</div>
+<div class="mt-auto pt-sm flex justify-between items-center border-t border-outline-variant/20">
+<div class="flex items-center gap-xs px-2 py-1 rounded bg-tertiary-container text-on-tertiary-container w-fit">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+<span class="font-label-lg text-label-lg">High Risk</span>
+</div>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Patient Card: Moderate -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group cursor-pointer hover:border-outline-variant hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-title-lg text-title-lg text-primary">
+                            RJ
+                        </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Robert Jones</h3>
+<span class="font-data-mono text-data-mono text-outline">ID: CN-1129-C</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-xs mt-sm bg-surface rounded-lg p-sm">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Age</span>
+<span class="font-body-md text-body-md text-on-surface">42 yrs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Last Visit</span>
+<span class="font-body-md text-body-md text-on-surface">1 week ago</span>
+</div>
+</div>
+<div class="mt-auto pt-sm flex justify-between items-center border-t border-outline-variant/20">
+<div class="flex items-center gap-xs px-2 py-1 rounded bg-surface-tint/20 text-on-surface w-fit">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span class="font-label-lg text-label-lg">Moderate</span>
+</div>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Patient Card: Low -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group cursor-pointer hover:border-outline-variant hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-title-lg text-title-lg text-primary">
+                            ML
+                        </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">Mary Lee</h3>
+<span class="font-data-mono text-data-mono text-outline">ID: CN-4450-D</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-xs mt-sm bg-surface rounded-lg p-sm">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Age</span>
+<span class="font-body-md text-body-md text-on-surface">35 yrs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Last Visit</span>
+<span class="font-body-md text-body-md text-on-surface">1 month ago</span>
+</div>
+</div>
+<div class="mt-auto pt-sm flex justify-between items-center border-t border-outline-variant/20">
+<div class="flex items-center gap-xs px-2 py-1 rounded bg-secondary-container text-on-secondary-container w-fit">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-lg text-label-lg">Low Risk</span>
+</div>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Additional Card to fill grid -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group cursor-pointer hover:border-outline-variant hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-title-lg text-title-lg text-primary">
+                            DW
+                        </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface leading-tight">David Wu</h3>
+<span class="font-data-mono text-data-mono text-outline">ID: CN-2211-E</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-xs mt-sm bg-surface rounded-lg p-sm">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Age</span>
+<span class="font-body-md text-body-md text-on-surface">61 yrs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-outline">Last Visit</span>
+<span class="font-body-md text-body-md text-on-surface">3 days ago</span>
+</div>
+</div>
+<div class="mt-auto pt-sm flex justify-between items-center border-t border-outline-variant/20">
+<div class="flex items-center gap-xs px-2 py-1 rounded bg-surface-tint/20 text-on-surface w-fit">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span class="font-label-lg text-label-lg">Moderate</span>
+</div>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0_4px_12px_rgba(0,53,80,0.2)] hover:shadow-[0_6px_16px_rgba(0,53,80,0.3)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center z-40 group" title="Add Patient">
+<span class="material-symbols-outlined text-title-lg group-hover:rotate-90 transition-transform duration-300" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-white/80 dark:bg-inverse-surface/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-label-lg text-label-lg docked full-width bottom-0 border-t border-outline-variant/30 flat no shadows fixed bottom-0 w-full z-50 flex justify-around items-center px-base pb-safe h-20">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform duration-200 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer w-16">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform duration-200 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer w-16">
+<span class="material-symbols-outlined mb-1 icon-fill" data-icon="group">group</span>
+<span class="text-[10px] font-medium">Patients</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform duration-200 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer w-16">
+<span class="material-symbols-outlined mb-1" data-icon="neurology">neurology</span>
+<span class="text-[10px] font-medium">Predict</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform duration-200 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer w-16">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</div>
+</nav>
+<script>
+        // Simple script to handle visual feedback on filter clicks
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.closest('.hide-scrollbar')) {
+                btn.addEventListener('click', function() {
+                    this.classList.toggle('bg-surface-container-low');
+                    this.classList.toggle('border-primary');
+                });
+            }
+        });
+    </script>
+
+
+
+
+</body></html>

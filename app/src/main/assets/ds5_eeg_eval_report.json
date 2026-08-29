@@ -1,0 +1,64 @@
+{
+  "model_name": "DS5_EEG_Seizure_CNN1D",
+  "dataset": "Seizure Classification Dataset",
+  "dataset_version": "Local 1D Segment Arrays (DS5)",
+  "number_train_records": 37666,
+  "number_val_records": 8071,
+  "split_method": "segment-level (no patient IDs available)",
+  "input_shape": [
+    1,
+    23,
+    256
+  ],
+  "architecture": "3-layer 1D CNN",
+  "parameter_count": 40769,
+  "training_seed": 42,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "batch_size": 128,
+  "epochs": 15,
+  "best_checkpoint": "ds5_eeg_seizure_model.pt",
+  "validation_metrics": {
+    "accuracy": 0.9373064056498576,
+    "sensitivity": 0.8736604624929498,
+    "specificity": 0.9552238805970149,
+    "precision": 0.84598580010923,
+    "recall": 0.8736604624929498,
+    "f1_score": 0.8596004439511654,
+    "auroc": 0.9781738067770376,
+    "brier_score": 0.045853883028030396,
+    "confusion_matrix": [
+      [
+        6016,
+        282
+      ],
+      [
+        224,
+        1549
+      ]
+    ]
+  },
+  "test_metrics": null,
+  "reproducibility": {
+    "passed": true,
+    "max_difference": 0.0
+  },
+  "onnx_export": {
+    "saved": true,
+    "verified": true,
+    "max_difference": 2.980232238769531e-07
+  },
+  "known_limitations_and_warnings": [
+    "Patient-level isolation cannot be verified because subject identifiers are absent.",
+    "Segment-level evaluation may be affected by recordings/episodes from the same subjects appearing across source partitions.",
+    "The supplied test partition contains no ground-truth labels.",
+    "Results must not be interpreted as evidence of clinical diagnostic performance or unseen-patient generalization."
+  ],
+  "environment": {
+    "python": "3.13.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cpu",
+    "numpy": "2.2.6",
+    "seed": 42
+  }
+}

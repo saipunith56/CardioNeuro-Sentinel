@@ -1,0 +1,187 @@
+{
+  "winning_model_architecture": "Baseline_WeightedBCE_MLP",
+  "selection_basis": "Validation Set Composite Score (AUPRC, AUROC, F1)",
+  "optimal_decision_threshold": 0.7,
+  "validation_performance_at_optimal_threshold": {
+    "accuracy": 0.8237597911227154,
+    "sensitivity": 0.7027027027027027,
+    "specificity": 0.8299039780521262,
+    "precision": 0.17333333333333334,
+    "f1_score": 0.27807486631016043,
+    "auroc": 0.8147777407036667,
+    "auprc": 0.2590779481913389,
+    "brier_score": 0.1809198558330536,
+    "confusion_matrix": [
+      [
+        605,
+        124
+      ],
+      [
+        11,
+        26
+      ]
+    ]
+  },
+  "held_out_test_performance_at_optimal_threshold": {
+    "accuracy": 0.7979139504563233,
+    "sensitivity": 0.6842105263157895,
+    "specificity": 0.803840877914952,
+    "precision": 0.15384615384615385,
+    "f1_score": 0.25120772946859904,
+    "auroc": 0.7994368637643492,
+    "auprc": 0.16884611238620034,
+    "brier_score": 0.19003614783287048,
+    "confusion_matrix": [
+      [
+        586,
+        143
+      ],
+      [
+        12,
+        26
+      ]
+    ]
+  },
+  "held_out_test_performance_at_default_05_threshold": {
+    "accuracy": 0.6649282920469362,
+    "sensitivity": 0.8157894736842105,
+    "specificity": 0.6570644718792867,
+    "precision": 0.1103202846975089,
+    "f1_score": 0.19435736677115986,
+    "auroc": 0.7994368637643492,
+    "auprc": 0.16884611238620034,
+    "brier_score": 0.19003614783287048,
+    "confusion_matrix": [
+      [
+        479,
+        250
+      ],
+      [
+        7,
+        31
+      ]
+    ]
+  },
+  "all_candidates_validation_summary": [
+    {
+      "name": "Baseline_WeightedBCE_MLP",
+      "best_threshold": 0.7,
+      "val_metrics_opt": {
+        "accuracy": 0.8237597911227154,
+        "sensitivity": 0.7027027027027027,
+        "specificity": 0.8299039780521262,
+        "precision": 0.17333333333333334,
+        "f1_score": 0.27807486631016043,
+        "auroc": 0.8147777407036667,
+        "auprc": 0.2590779481913389,
+        "brier_score": 0.1809198558330536,
+        "confusion_matrix": [
+          [
+            605,
+            124
+          ],
+          [
+            11,
+            26
+          ]
+        ]
+      }
+    },
+    {
+      "name": "FocalLoss_MLP",
+      "best_threshold": 0.4599999999999999,
+      "val_metrics_opt": {
+        "accuracy": 0.7963446475195822,
+        "sensitivity": 0.7027027027027027,
+        "specificity": 0.8010973936899863,
+        "precision": 0.15204678362573099,
+        "f1_score": 0.25,
+        "auroc": 0.8273087902717533,
+        "auprc": 0.2306933792011357,
+        "brier_score": 0.10202217847108841,
+        "confusion_matrix": [
+          [
+            584,
+            145
+          ],
+          [
+            11,
+            26
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Oversampling_WeightedBCE_MLP",
+      "best_threshold": 0.6499999999999999,
+      "val_metrics_opt": {
+        "accuracy": 0.8224543080939948,
+        "sensitivity": 0.7027027027027027,
+        "specificity": 0.8285322359396433,
+        "precision": 0.17218543046357615,
+        "f1_score": 0.2765957446808511,
+        "auroc": 0.81266451636822,
+        "auprc": 0.24729639788975902,
+        "brier_score": 0.14851722121238708,
+        "confusion_matrix": [
+          [
+            604,
+            125
+          ],
+          [
+            11,
+            26
+          ]
+        ]
+      }
+    },
+    {
+      "name": "TabularResNet_WeightedBCE_Cosine",
+      "best_threshold": 0.8099999999999999,
+      "val_metrics_opt": {
+        "accuracy": 0.8838120104438643,
+        "sensitivity": 0.43243243243243246,
+        "specificity": 0.906721536351166,
+        "precision": 0.19047619047619047,
+        "f1_score": 0.2644628099173554,
+        "auroc": 0.7660252845438031,
+        "auprc": 0.13925559968191215,
+        "brier_score": 0.1150478646159172,
+        "confusion_matrix": [
+          [
+            661,
+            68
+          ],
+          [
+            21,
+            16
+          ]
+        ]
+      }
+    },
+    {
+      "name": "TabularResNet_FocalLoss_Cosine",
+      "best_threshold": 0.5199999999999999,
+      "val_metrics_opt": {
+        "accuracy": 0.8994778067885117,
+        "sensitivity": 0.3783783783783784,
+        "specificity": 0.9259259259259259,
+        "precision": 0.20588235294117646,
+        "f1_score": 0.26666666666666666,
+        "auroc": 0.7597226856486116,
+        "auprc": 0.15157323726678162,
+        "brier_score": 0.06708884984254837,
+        "confusion_matrix": [
+          [
+            675,
+            54
+          ],
+          [
+            23,
+            14
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+# Android / Gradle
+.gradle/
+build/
+*/build/
+app/applet/
+
+# Android Studio / IDE
+.idea/
+*.iml
+.vscode/
+local.properties
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Raw ML datasets (gigabytes of raw recordings & images)
+data/raw/
+**/data/raw/
+ml_pipeline/data/raw/
+raw/
+
+# Generated model/training checkpoints & runs
+ml_pipeline/checkpoints/
+ml_pipeline/runs/
+ml_pipeline/logs/
+logs/
+
+# APK / release binaries
+*.apk
+*.aab
+
+# Debug & diagnostic logs / diffs
+*.log
+crash_log*.txt
+logcat_output.txt
+physical_crash.txt
+build_output*.txt
+compile_output.txt
+gradle_output*.txt
+new_diagnostic_diff.txt
+tmp_diff*.txt
+inference_files.txt
+build_log.txt
+CardioNeuro_Report_1_4.pdf
+metadata.json
+
+# Extracted APK files & Android runtime dumps in root
+/classes*.dex
+/*.dex
+/*.bin
+/*.arsc
+/AndroidManifest.xml
+/META-INF/
+/kotlin/
+/lib/
+/okhttp3/
+/res/
+ui_hierarchy.xml
+window_dump*.xml
+current_screen*.png
+screen*.png
+
+# Extracted properties in root
+build-data.properties
+core-common.properties
+integrity.properties
+firebase-*.properties
+play-services-*.properties
+recaptcha.properties
+
+# Temporary test & inspection scripts
+tmp_*
+request_test.py
